@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Messages</title>
+</head>
+<body>
+<h1>Messages</h1>
+<a th:href="@{|/message?username=${username}|}">Share this link to view your message list</a>
+<table>
+    <thead>
+    <tr>
+        <th>Title</th>
+
+        <th>Username</th>
+        <th>Nickname</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="message : ${messages}">
+        <td><a th:href="@{|/message/${message.id}|}" th:text="${message.title}"></a></td>
+        <td th:text="${message.username}"></td>
+        <td th:text="${message.nickname}"></td>
+    </tr>
+    </tbody>
+</table>
+<div th:if="${error}">
+    <p th:text="${error}"></p>
+</div>
+</body>
+</html>

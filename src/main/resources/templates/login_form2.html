@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+  <title>메인</title>
+  <meta content="" name="description" />
+  <meta content="" name="keywords" />
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon" />
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+
+  <!-- Google Fonts -->
+  <link
+          href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i"
+          rel="stylesheet"
+  />
+
+  <!-- Vendor CSS Files -->
+  <link rel="stylesheet" type="text/css" th:href="@{/assets/css/bootstrap.min.css}">
+  <link th:href="@{/assets/vendor/bootstrap-icons/bootstrap-icons.css}" rel="stylesheet"/>
+
+  <!-- Template Main CSS File -->
+  <link rel="stylesheet" type="text/css" th:href="@{/assets/css/style.css}">
+</head>
+
+<body>
+<!-- ======= Header ======= -->
+<header id="header">
+  <div
+          class="container-fluid d-flex justify-content-between align-items-center"
+  >
+    <div class="logo">
+      <h1 class="text-light">
+        <a href="index.html"><span></span></a>
+      </h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+    </div>
+
+    <div class="contact-link float-right">
+      <a href="#contact" class="scrollto">둘러보기</a>
+    </div>
+  </div>
+</header>
+<!-- End #header -->
+
+<!-- ======= Hero Section ======= -->
+<section id="hero">
+  <div class="hero-container">
+    <h1>생일 축하해요!</h1>
+    <h2>케이크에 편지를 남겨주세요</h2>
+    <div class="countdown">
+      <div class="cake">
+        <div class="flame" id="flame1"></div>
+        <div class="flame" id="flame2"></div>
+        <div class="flame" id="flame3"></div>
+      </div>
+    </div>
+    <ul class="login-ul">
+      <li class="login-li">
+        <a href="#" class="kakao-a"
+        ><img
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAM+SURBVHgB7ZdfSFNRHMd/59xNN2NgPVS4fw/6kvpSVhCJ/SMoHwKLPQWFgdJjbxURSNAfqIfoz0NETxIE1WMP/ZGGudayPySm6ENzG5sa4XRT29zdOf1udefm3fRO3a7gPnA5v/Pv3u/9nT+/cwBKlNAWAsugvaFB3z8xcYCK4i6gtBYYq8ZiMxCy6f87J9EeRWOME9JPCekyJZO9L/z+MORJXgL3W631CUJOYafTmN0M+RHBfq8J53e6A4FutZ1UCTxotVbHKb1AGGtFzwiwUjj36Bg75wwGPyzVdEmBTTbbeUbIJXypCVYXhs9dbjRedg0NRXM1yimwoaqqwqjT3UazDQoICugVDYYW9/BwMEe9kqM1NeXTicRjzvkJKAK4iAaNAIde+nyjirpsHVDctWKJk2Ccb5vh/Okei8W4sE4x4RstliO4EO5D8bHpCBF9U1PO9MKMIXbU1ZWNTU9/Re/VgjbM4nDXd/t8XrkgY4jHotFjGoqTqOCMZSzKhXOwFTQGI09rR5qulOFwOAQOsBO0Z+sbm227nEkJHPV47JB/+CoIXBCqZTslEKPFFlgj0GSyLGXLBgbxCKwRiCDMyfa8B83mHxhvRVgLMPZLNlMC3W73b0LIR9CeGE0k+uRMxjaDq/gVaI/LGQopPSiBm/RDTGZBSyi9lZ7NiMWBSCRqr6w0oLkPtIAQT4/PdzG9SHGaYQbDTWz4HYpPOMH5Gfg70+ZRCJROt1joQJE/oUjg90TcWto9fv9AljoleJoY1HPejEedEBSeGDrj7Duv91m2Spqr11u//7Og10tz8QsUCkJCuCha0CGPcjVZ9IY2Eg5PmE2mTtwf5/DZgUUGWAVwkjH0zD0Wj590BYPfFmur+l68124/juHwOawA/FgcY34nRooHrkDgk5o+OlAJvnxZB1nsJ226XYxSD/7gE1eWi9FiqBfI+WGuLI7hc4NQ6sS0Ejf6DdiO4rwS8SIUKWdsqCkQ8Hb8uwMvC1VD3GizbcREurem37qkxdPeg4sJCghV0yjJ+W6YFzeHHruSZKyx0OIkVA2xQEizlKK7B0RC2twjI++hSKibg4RUoauvTsZi1/vGx2egRIl1xB/FvCXQvkz0kAAAAABJRU5ErkJggg=="
+                class="login-img"
+        /><span class="login-span">카카오계정으로 계속하기</span></a>
+      </li>
+      <li class="login-li">
+        <a href="#" class="naver-a"><img
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAJXSURBVHgBvZg/aBVBEMa/2bt7EhU0IBi7dEIawc5OEEs7RRubaKVNygQl6XzyCgUtLMTGwhSxt9NKCKTQzjJKUAQRRIvk3v1Zv03E+nZ3Jj943BY3937s3s7Mnkz7xiMCEYxLlKsi0sbEee9PNmg+wMv80BgBvjtE4j2Wu667hkMiWpBI7/oHnJEzOARSBInMt+ieUHIGxiQK7r9TV5uuuw5jkgUPov2jqZ+ehyF5gsCseBlzNksYkSsI5qhLLdqHMCJbkBRMPYtWS60hGJhlAn7FpT4CZbQEA2e51CtQRlMwVJm1vXbvChRRFdx/oCuec6nnoIS6IDndoJtQ8jgUsBAMa32zRncRCtgIhgd7/5Kp5xwyMRNEqDKQSW7qsRQMu/pyg/4OMogWZEf9g5c/g2/3fq329QISie+oga/iMeawH3a/PyHebexi9xgSSFri0pVPeWB4GxGyMMLoPhKQ2EMTxT5WKC9wNNf6dovBpwZG9v9+g1uzpEPT/2CRz73IEodDT3fhv6L7xqxdPEKxTtN1GJIlyFnsKxT3ONqGEdl5kJI7zCW3MXBXx6KSqPml4b2Im8AAFUHOYl3Chdz4CcqolTpK/m7FL2L4rh6Eai0+KqNNFuAlKKLeLFSuesYMuwkl1AUPUk95I1QBKGDSblHyC2fxMYc1MjHrByupJk5kA5mYNqwNilXO5w4yMBWcEdl2grvIqDKmgoECxRumnhdIxFwwfGxn6lnhptlCAuaCAUr+ZNpZRkKVKRn8OiaAZ4xvvHSIhA3Fu0aaWwI3+NsNu/VffwGxe7W0GWwE5QAAAABJRU5ErkJggg=="
+                class="login-img"
+        /><span class="login-span">네이버로 계속하기</span></a>
+      </li>
+      <li class="login-li">
+        <a href="#" class="google-a"  id="login-button"
+        ><img
+                th:src="@{/assets/img/2fpchc6gsov07l5ilu48nrjsnq.png}"
+                class="login-img"
+        /><span class="login-span">회원 아이디로 계속하기</span></a>
+      </li>
+    </ul>
+  </div>
+  <!--  로그인 창  -->
+  <div id="login-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <form th:action="@{/user/login}" method="post">
+        <div th:if="${param.error}">
+          <div class="alert alert-danger">
+            사용자ID 또는 비밀번호를 확인해 주세요.
+          </div>
+        </div>
+        <input type="text" id="username" name="username" placeholder="아이디를 입력하세요." required >
+        <br>
+
+        <input type="password" id="password" name="password" placeholder="비밀번호를 입력하세요." required>
+        <br>
+        <input type="submit" value="바로가입" id="register"/>
+      </form>
+    </div>
+  </div>
+</section>
+<!-- End Hero -->
+
+<main id="main">
+  <!-- ======= Contact Us Section ======= -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <div class="section-title">
+        <h2>생일 메세지를 보내보세요.</h2>
+      </div>
+
+      <div class="row contact-info">
+        <div class="col-md-4">
+          <div class="contact-address">
+            <i class="bi bi-geo-alt"></i>
+            <h3>Address</h3>
+            <address>A108 Adam Street, NY 535022, USA</address>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="contact-phone">
+            <i class="bi bi-phone"></i>
+            <h3>Phone Number</h3>
+            <p><a href="tel:+155895548855">+1 5589 55488 55</a></p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="contact-email">
+            <i class="bi bi-envelope"></i>
+            <h3>Email</h3>
+            <p><a href="mailto:info@example.com">info@example.com</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Contact Us Section -->
+</main>
+<!-- End #main -->
+
+<!-- ======= Footer ======= -->
+<footer id="footer">
+  <div class="container">
+    <div class="copyright">
+      &copy; Copyright <strong><span>최성식</span></strong
+    >. All Rights Reserved
+    </div>
+    <div class="credits">
+      <!-- All the links in the footer should remain intact. -->
+      <!-- You can delete the links only if you purchased the pro version. -->
+      <!-- Licensing information: https://bootstrapmade.com/license/ -->
+      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/free-bootstrap-coming-soon-template-countdwon/ -->
+      Designed by <a href="https://bootstrapmade.com/">최성식</a>
+    </div>
+  </div>
+</footer>
+<!-- End #footer -->
+
+
+<script th:src="@{/assets/vendor/bootstrap/js/bootstrap.min.js}"></script>
+<!-- Vendor JS Files -->
+<script th:src="@{/assets/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/assets/vendor/php-email-form/validate.js}"></script>
+
+<!-- Template Main JS File -->
+<script th:src="@{/assets/js/main.js}"></script>
+</body>
+</html>

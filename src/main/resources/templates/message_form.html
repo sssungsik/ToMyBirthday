@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>New Message</title>
+</head>
+<body>
+<h1>Write a New Message</h1>
+<form th:action="@{/message/new}" method="post">
+    <div>
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" required>
+    </div>
+    <div>
+        <label for="content">Content:</label>
+        <textarea id="content" name="content" required></textarea>
+    </div>
+    <div>
+        <label for="nickname">Nickname:</label>
+        <input type="text" id="nickname" name="nickname" required>
+    </div>
+    <input type="hidden" id="username" name="username" th:value="${username}">
+    <button type="submit">Submit</button>
+</form>
+</body>
+</html>
