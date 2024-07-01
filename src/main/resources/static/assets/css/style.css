@@ -24,6 +24,15 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+.font-1-white {
+  font-family: "Pretendard-Regular";
+  color: white;
+}
+
+.cake-username {
+  color: #51dcdb;
+  background: none;
+}
 body {
   font-family: "Open Sans", sans-serif;
   color: #444;
@@ -113,6 +122,21 @@ h6,
   z-index: 9;
   /* countdown */
 }
+#hero-list {
+  width: 100%;
+  height: 100vh;
+  background: url("../img/list-back.jpg") top center;
+  background-size: cover;
+  position: relative;
+  margin-top: -80px;
+  z-index: 9;
+  /* countdown */
+}
+.hero-list-card {
+  background-color: rgba(0,0,0,0.6);
+  margin: auto;
+}
+
 
 #hero .hero-container {
   position: absolute;
@@ -125,6 +149,19 @@ h6,
   align-items: center;
   flex-direction: column;
   text-align: center;
+  padding: 0 15px;
+}
+.hero-container2 {
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: left;
   padding: 0 15px;
 }
 
@@ -162,6 +199,25 @@ h6,
   background-position: center;
   position: relative;
 }
+.cake-container {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+.cake-image {
+  width: 100%;
+  height: auto;
+}
+.message-title {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  max-width: 100px; /* Ensure the title fits nicely */
+  word-wrap: break-word;
+}
+
 .flame {
   position: absolute;
   width: 3px;

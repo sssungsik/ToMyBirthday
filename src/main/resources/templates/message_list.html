@@ -1,33 +1,36 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layout}">
 <head>
-    <title>Messages</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
-<body>
-<h1>Messages</h1>
-<a th:href="@{|/message?username=${username}|}">Share this link to view your message list</a>
-<table>
-    <thead>
-    <tr>
-        <th>Title</th>
 
-        <th>Username</th>
-        <th>Nickname</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="message : ${messages}">
-        <td><a th:href="@{|/message/${message.id}|}" th:text="${message.title}"></a></td>
-        <td th:text="${message.username}"></td>
-        <td th:text="${message.nickname}"></td>
-    </tr>
-    </tbody>
-</table>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#messageModal">Write a Message</button>
+<div layout:fragment="content">
+    <section id="hero-list">
+        <div class="hero-container2">
+            <div class="hero-list-card p-3">
+        <h3  class="font-1-white"><mark th:text="${username}" class="cake-username"></mark>님의 케이크</h3>
+                <p class="font-1-white">💌 개 의 메세지가 도착했어요.</p>
+        <a th:href="@{|/message?username=${username}|}">Share this link to view your message list</a>
+            </div>
+                <div class="cake-container">
+                    <img th:src="@{/assets/img/cake2.png}" alt="Cake" class="cake2">
+                    <a th:each="message, iterStat : ${messages}" class="message-title"
+                         th:if="${iterStat.index < 5}" th:text="${message.nickname}"
+                       th:href="@{|/message/${message.id}|}">
+
+                    </a>
+                </div>
+
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#messageModal">글 남기기</button>
+
 <div th:if="${error}">
     <p th:text="${error}"></p>
 </div>
+            <div class="cake2">
+                <a></a>
+            </div>
+        </div>
+    </section>
 
 <!-- Modal -->
 <div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="messageModalLabel" aria-hidden="true">
@@ -63,8 +66,35 @@
         </div>
     </div>
 </div>
+
+
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-</body>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const titles = document.querySelectorAll('.message-title');
+            const container = document.querySelector('.cake-container');
+            const containerWidth = container.offsetWidth;
+
+            // Define positions for 5 messages
+            const positions = [
+                { top: '20px', left: '20px' },
+                { top: '20px', left: `${containerWidth / 2 - 50}px` },
+                { top: '20px', left: `${containerWidth - 120}px` },
+                { top: '80px', left: `${containerWidth / 4 - 50}px` },
+                { top: '80px', left: `${3 * containerWidth / 4 - 50}px` }
+            ];
+
+            titles.forEach((title, index) => {
+                if (index < 5) { // Only position the first 5 titles
+                    title.style.top = positions[index].top;
+                    title.style.left = positions[index].left;
+                }
+            });
+        });
+    </script>
+</div>
+
+
 </html>

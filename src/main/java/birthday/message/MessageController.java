@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -47,12 +48,14 @@ public class MessageController {
 
     @PostMapping("/message/new")
     public String submitNewMessage(@RequestParam String title, @RequestParam String content,
-                                   @RequestParam String nickname, @RequestParam String username) {
+                                   @RequestParam String nickname, @RequestParam String username
+                                  ) {
         Message message = new Message();
         message.setTitle(title);
         message.setContent(content);
         message.setNickname(nickname);
         message.setUsername(username);
+       
 
         messageService.saveMessage(message);
         return "redirect:/message?username=" + username;
