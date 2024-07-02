@@ -4,13 +4,17 @@
 </head>
 
 <div layout:fragment="content">
-    <section id="hero-list">
-        <div class="hero-container2">
-            <div class="hero-list-card p-3">
-        <h3  class="font-1-white"><mark th:text="${username}" class="cake-username"></mark>님의 케이크</h3>
-                <p class="font-1-white">💌 개 의 메세지가 도착했어요.</p>
-        <a th:href="@{|/message?username=${username}|}">Share this link to view your message list</a>
-            </div>
+    <button class="css-1hxww83"></button>
+    <article class="hero-list">
+        <div class="hero-list-div">
+            <section class="hero-list-div-section">
+                <div class="hero-list-div-div">
+                    <h1 class="font-1-white hero-list-h3"><mark th:text="${username}" class="cake-username"></mark>님의 케이크</h1>
+                <button aria-label="메뉴버튼" class="btn-hamb">메뉴</button>
+                </div>
+                <div class="message-length">💌 개 의 메세지가 도착했어요.</div>
+               <a th:href="@{|/message?username=${username}|}">Share this link to view your message list</a>
+            </section>
                 <div class="cake-container">
                     <picture>
                     <img th:src="@{/assets/img/cake2.png}" alt="Cake" class="cake-image">
@@ -30,8 +34,9 @@
             <div class="cake2">
                 <a></a>
             </div>
+
         </div>
-    </section>
+    </article>
 
 <!-- Modal -->
 <div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="messageModalLabel" aria-hidden="true">
