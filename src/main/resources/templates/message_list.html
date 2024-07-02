@@ -12,11 +12,12 @@
         <a th:href="@{|/message?username=${username}|}">Share this link to view your message list</a>
             </div>
                 <div class="cake-container">
+                    <picture>
                     <img th:src="@{/assets/img/cake2.png}" alt="Cake" class="cake-image">
+                    </picture>
                     <a th:each="message, iterStat : ${messages}" class="message-title"
                          th:if="${iterStat.index < 5}" th:text="${message.nickname}"
                        th:href="@{|/message/${message.id}|}">
-
                     </a>
                 </div>
 

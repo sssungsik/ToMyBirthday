@@ -66,6 +66,7 @@ h6,
   padding: 20px 0;
   position: relative;
   z-index: 10;
+  background-color: rgba(0,0,0,0.5);
   font-family: "Pretendard-Regular";
 }
 
@@ -134,7 +135,7 @@ h6,
 }
 .hero-list-card {
   background-color: rgba(0,0,0,0.6);
-  margin: auto;
+  margin: 0;
 }
 
 
@@ -201,12 +202,12 @@ h6,
 }
 .cake-container {
   position: relative;
-  text-align: center;
-  color: white;
+  width: 39.687rem;
+  margin-top: 3.4375rem;
 }
 .cake-image {
-  width: 100%;
-  height: auto;
+  width: 33.687rem;
+  height: 22.875rem;
 }
 .message-title {
   position: absolute;
