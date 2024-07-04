@@ -261,8 +261,28 @@ button {
 }
 .cake-container {
   position: relative;
-  width: 39.687rem;
-  margin-top: 0;
+}
+
+.cake-ul {
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  white-space: nowrap;
+  width: 100%;
+  scroll-snap-type: x mandatory;
+}
+.cake-slick-slider{
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -khtml-user-select: none;
+  -ms-touch-action: pan-y;
+  touch-action: pan-y;
+  -webkit-tap-highlight-color: transparent
 }
 .cake-image {
   width: 42.687rem;
@@ -270,7 +290,12 @@ button {
 }
 .btn-hamb {
   margin-left: auto;
+  margin-right: 1rem;
 }
+.btn-hamb img {
+  height: 1.22rem;
+}
+
 .message-title {
   position: absolute;
   background-color: rgba(0, 0, 0, 0.5);

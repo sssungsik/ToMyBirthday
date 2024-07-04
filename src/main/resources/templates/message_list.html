@@ -10,12 +10,15 @@
             <section class="hero-list-div-section">
                 <div class="hero-list-div-div">
                     <h1 class="font-1-white hero-list-h3"><mark th:text="${username}" class="cake-username"></mark>님의 케이크</h1>
-                <button aria-label="메뉴버튼" class="btn-hamb">메뉴</button>
+                <a href="#" aria-label="메뉴버튼" class="btn-hamb"><img th:src="@{/assets/img/hamb.png}"/> </a>
                 </div>
                 <div class="message-length">💌 개 의 메세지가 도착했어요.</div>
                <a th:href="@{|/message?username=${username}|}">Share this link to view your message list</a>
             </section>
                 <div class="cake-container">
+
+                    <ul class="cake-ul">
+                        <div class="cake-slick-slider">
                     <picture>
                     <img th:src="@{/assets/img/cake2.png}" alt="Cake" class="cake-image">
                     </picture>
@@ -23,6 +26,8 @@
                          th:if="${iterStat.index < 5}" th:text="${message.nickname}"
                        th:href="@{|/message/${message.id}|}">
                     </a>
+                        </div>
+                    </ul>
                 </div>
 
 
