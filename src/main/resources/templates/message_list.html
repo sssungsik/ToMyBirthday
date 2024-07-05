@@ -1,6 +1,7 @@
 <html xmlns:th="http://www.thymeleaf.org"
       layout:decorate="~{layout}">
 <head>
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/index.css}">
 </head>
 
 <div layout:fragment="content">
@@ -10,28 +11,39 @@
             <section class="hero-list-div-section">
                 <div class="hero-list-div-div">
                     <h1 class="font-1-white hero-list-h3"><mark th:text="${username}" class="cake-username"></mark>님의 케이크</h1>
-                <a href="#" aria-label="메뉴버튼" class="btn-hamb"><img th:src="@{/assets/img/hamb.png}"/> </a>
+                <a href="#" aria-label="메뉴버튼" class="btn-hamb"><i class="bi bi-list" style="color: white;"></i></a>
                 </div>
-                <div class="message-length">💌 개 의 메세지가 도착했어요.</div>
-               <a th:href="@{|/message?username=${username}|}">Share this link to view your message list</a>
+                <div class="message-length" th:each="m, i : ${messages}"
+                                            th:if="${i.index < 1}"
+                                            th:text="'💌 ' + ${i.size} +  ' 개 의 메세지가 도착했어요.'" ></div>
+
             </section>
                 <div class="cake-container">
 
                     <ul class="cake-ul">
                         <div class="cake-slick-slider">
+                            <div class="slick-list">
+
                     <picture>
                     <img th:src="@{/assets/img/cake2.png}" alt="Cake" class="cake-image">
                     </picture>
                     <a th:each="message, iterStat : ${messages}" class="message-title"
-                         th:if="${iterStat.index < 5}" th:text="${message.nickname}"
+                         th:if="${iterStat.index < 8}" th:text="${message.nickname}"
                        th:href="@{|/message/${message.id}|}">
                     </a>
+
+
+                            </div>
                         </div>
                     </ul>
                 </div>
 
 
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#messageModal">글 남기기</button>
+<a type="button" class="btn btn-primary" th:href="@{|/message?username=${username}|}">공유하기</a>
+
+
+
 
 <div th:if="${error}">
     <p th:text="${error}"></p>
