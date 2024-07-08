@@ -9,7 +9,7 @@
             <div class="infoBox p-2">
                 <div class="infoBoxFlex">
                     <h1 class="font-1-white hero-list-h3"><mark th:text="${username}" class="cake-username"></mark>님의 케이크</h1>
-                    <a href="#" aria-label="메뉴버튼" class="btn-hamb" style="margin-left: auto;"><i class="bi bi-list" style="color: white;"></i></a>
+                    <a href="#" aria-label="메뉴버튼" class="btn-hamb" style="margin-left: auto;"><i class="bi bi-list fs-3" style="color: white;"></i></a>
                 </div>
                 <div class="message-length" th:each="m, i : ${messages}"
                                             th:if="${i.index < 1}"
@@ -29,9 +29,10 @@
         </div>
 
 
-
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#messageModal">글 남기기</button>
-            <a type="button" class="btn btn-primary" th:href="@{|/message?username=${username}|}">공유하기</a>
+            <div class="btnList">
+                <button type="button" class="messageBtn" data-toggle="modal" data-target="#messageModal">🖍글 남기기</button>
+                <button type="button" class="shareBtn" th:href="@{|/message?username=${username}|}"><i class="bi bi-share-fill"></i>공유하기</button>
+                </div>
             <div th:if="${error}">
                 <p th:text="${error}"></p>
             </div>
