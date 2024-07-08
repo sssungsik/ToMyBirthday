@@ -5,45 +5,38 @@
 </head>
 
 <div layout:fragment="content">
-    <button class="css-1hxww83"></button>
-    <article class="hero-list">
-        <div class="hero-list-div">
-            <section class="hero-list-div-section">
-                <div class="hero-list-div-div">
+    <div class="hero-list">
+            <div class="infoBox p-2">
+                <div class="infoBoxFlex">
                     <h1 class="font-1-white hero-list-h3"><mark th:text="${username}" class="cake-username"></mark>님의 케이크</h1>
-                    <a href="#" aria-label="메뉴버튼" class="btn-hamb"><i class="bi bi-list" style="color: white;"></i></a>
+                    <a href="#" aria-label="메뉴버튼" class="btn-hamb" style="margin-left: auto;"><i class="bi bi-list" style="color: white;"></i></a>
                 </div>
                 <div class="message-length" th:each="m, i : ${messages}"
                                             th:if="${i.index < 1}"
                                             th:text="'💌 ' + ${i.size} +  ' 개 의 메세지가 도착했어요.'" >
+                </div>
+            </div>
+        <div class="cakeImage">
+            <img th:src="@{/assets/img/cake2.png}" alt="Cake">
+        </div>
+        <div class="messageCards">
 
-                </div>
-            </section>
-                <div class="cake-container">
-                    <ul class="cake-ul">
-                        <div class="cake-slick-slider">
-                            <div class="slick-list">
-                                <picture>
-                                 <img th:src="@{/assets/img/cake2.png}" alt="Cake" class="cake-image">
-                                </picture>
-                                <a th:each="message, iterStat : ${messages}" class="message-title"
-                                   th:text="${message.nickname}"
-                                   th:href="@{|/message/${message.id}|}">
-                                </a>
-                            </div>
-                        </div>
-                    </ul>
-                </div>
+                <a th:each="message, iterStat : ${messages}" class="message-title"
+                    th:text="${message.nickname}"
+                    th:href="@{|/message/${message.id}|}">
+                </a>
+
+        </div>
+
+
+
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#messageModal">글 남기기</button>
             <a type="button" class="btn btn-primary" th:href="@{|/message?username=${username}|}">공유하기</a>
             <div th:if="${error}">
                 <p th:text="${error}"></p>
             </div>
-                <div class="cake2">
-                    <a></a>
-                </div>
-        </div>
-    </article>
+    </div>
+
 
 <!-- Modal -->
 <div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="messageModalLabel" aria-hidden="true">
