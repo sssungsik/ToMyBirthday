@@ -1,7 +1,7 @@
 <html xmlns:th="http://www.thymeleaf.org"
       layout:decorate="~{layout}">
 <head>
-    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/index.css}">
+ <!--   <link rel="stylesheet" type="text/css" th:href="@{/assets/css/index.css}">-->
 </head>
 
 <div layout:fragment="content">
@@ -11,47 +11,37 @@
             <section class="hero-list-div-section">
                 <div class="hero-list-div-div">
                     <h1 class="font-1-white hero-list-h3"><mark th:text="${username}" class="cake-username"></mark>님의 케이크</h1>
-                <a href="#" aria-label="메뉴버튼" class="btn-hamb"><i class="bi bi-list" style="color: white;"></i></a>
+                    <a href="#" aria-label="메뉴버튼" class="btn-hamb"><i class="bi bi-list" style="color: white;"></i></a>
                 </div>
                 <div class="message-length" th:each="m, i : ${messages}"
                                             th:if="${i.index < 1}"
-                                            th:text="'💌 ' + ${i.size} +  ' 개 의 메세지가 도착했어요.'" ></div>
+                                            th:text="'💌 ' + ${i.size} +  ' 개 의 메세지가 도착했어요.'" >
 
+                </div>
             </section>
                 <div class="cake-container">
-
                     <ul class="cake-ul">
                         <div class="cake-slick-slider">
                             <div class="slick-list">
-
-                    <picture>
-                    <img th:src="@{/assets/img/cake2.png}" alt="Cake" class="cake-image">
-                    </picture>
-                    <a th:each="message, iterStat : ${messages}" class="message-title"
-                         th:if="${iterStat.index < 8}" th:text="${message.nickname}"
-                       th:href="@{|/message/${message.id}|}">
-                    </a>
-
-
+                                <picture>
+                                 <img th:src="@{/assets/img/cake2.png}" alt="Cake" class="cake-image">
+                                </picture>
+                                <a th:each="message, iterStat : ${messages}" class="message-title"
+                                   th:text="${message.nickname}"
+                                   th:href="@{|/message/${message.id}|}">
+                                </a>
                             </div>
                         </div>
                     </ul>
                 </div>
-
-
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#messageModal">글 남기기</button>
-<a type="button" class="btn btn-primary" th:href="@{|/message?username=${username}|}">공유하기</a>
-
-
-
-
-<div th:if="${error}">
-    <p th:text="${error}"></p>
-</div>
-            <div class="cake2">
-                <a></a>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#messageModal">글 남기기</button>
+            <a type="button" class="btn btn-primary" th:href="@{|/message?username=${username}|}">공유하기</a>
+            <div th:if="${error}">
+                <p th:text="${error}"></p>
             </div>
-
+                <div class="cake2">
+                    <a></a>
+                </div>
         </div>
     </article>
 
@@ -94,29 +84,7 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const titles = document.querySelectorAll('.message-title');
-            const container = document.querySelector('.cake-container');
-            const containerWidth = container.offsetWidth;
 
-            // Define positions for 5 messages
-            const positions = [
-                { top: '20px', left: '20px' },
-                { top: '20px', left: `${containerWidth / 2 - 50}px` },
-                { top: '20px', left: `${containerWidth - 120}px` },
-                { top: '80px', left: `${containerWidth / 4 - 50}px` },
-                { top: '80px', left: `${3 * containerWidth / 4 - 50}px` }
-            ];
-
-            titles.forEach((title, index) => {
-                if (index < 5) { // Only position the first 5 titles
-                    title.style.top = positions[index].top;
-                    title.style.left = positions[index].left;
-                }
-            });
-        });
-    </script>
 </div>
 
 
