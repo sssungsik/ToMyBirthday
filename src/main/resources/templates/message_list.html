@@ -15,18 +15,19 @@
                                             th:if="${i.index < 1}"
                                             th:text="'💌 ' + ${i.size} +  ' 개 의 메세지가 도착했어요.'" >
                 </div>
+                <div class="cakeImage">
+                    <img th:src="@{/assets/img/cake2.png}" alt="Cake">
+                </div>
+                <div class="messageCards">
+
+                    <a th:each="message, iterStat : ${messages}" class="message-title"
+                       th:text="${message.nickname}"
+                       th:href="@{|/message/${message.id}|}">
+                    </a>
+
+                </div>
             </div>
-        <div class="cakeImage">
-            <img th:src="@{/assets/img/cake2.png}" alt="Cake">
-        </div>
-        <div class="messageCards">
 
-                <a th:each="message, iterStat : ${messages}" class="message-title"
-                    th:text="${message.nickname}"
-                    th:href="@{|/message/${message.id}|}">
-                </a>
-
-        </div>
 
 
             <div class="btnList">
