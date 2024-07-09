@@ -29,14 +29,20 @@
                     </a>
 
                 </div>
+                <div class="paging">
+                    <div class="paging-form font-1-white">
+                        <i class="bi bi-chevron-double-left"></i> 1 / 1 <i class="bi bi-chevron-double-right"></i>
+                    </div>
+                </div>
+                <div class="btnList">
+                    <button type="button" class="messageBtn" data-toggle="modal" data-target="#messageModal">🖍글 남기기</button>
+                    <button type="button" class="shareBtn" th:href="@{|/message?username=${username}|}"><i class="bi bi-share-fill"></i>공유하기</button>
+                </div>
             </div>
 
 
 
-            <div class="btnList">
-                <button type="button" class="messageBtn" data-toggle="modal" data-target="#messageModal">🖍글 남기기</button>
-                <button type="button" class="shareBtn" th:href="@{|/message?username=${username}|}"><i class="bi bi-share-fill"></i>공유하기</button>
-                </div>
+
             <div th:if="${error}">
                 <p th:text="${error}"></p>
             </div>

@@ -185,12 +185,9 @@ h6,
   font-family: 'Pretendard-Regular';
 }
 .btnList {
-  flex: 1 1 0%;
   display: flex;
-  flex-direction: row;
-  -webkit-box-align: center;
-  align-items: center;
   max-width: 23.4375rem;
+  margin: auto;
 }
 .shareBtn{
   font-size: 1rem;
@@ -294,7 +291,21 @@ h6,
   padding: 10px;
   text-decoration: none;
 }
-
+.paging {
+  display: flex;
+  justify-content: center;
+}
+.paging-form {
+  padding: 0.375rem 0.5rem;
+  border-radius: 6.125rem;
+  color: white;
+  font-size: .875rem;
+  line-height: 1.24rem;
+  font-weight: 500;
+  background-color: rgba(17, 21, 28, .95);
+  position: relative;
+  top: -4rem;
+}
 
 .flame {
   position: absolute;
