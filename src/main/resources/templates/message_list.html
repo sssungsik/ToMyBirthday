@@ -1,30 +1,90 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layout}">
 <head>
-    <title>Messages</title>
+ <!--   <link rel="stylesheet" type="text/css" th:href="@{/assets/css/index.css}">-->
 </head>
-<body>
-<h1>Messages</h1>
-<a th:href="@{|/message?username=${username}|}">Share this link to view your message list</a>
-<table>
-    <thead>
-    <tr>
-        <th>Title</th>
 
-        <th>Username</th>
-        <th>Nickname</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="message : ${messages}">
-        <td><a th:href="@{|/message/${message.id}|}" th:text="${message.title}"></a></td>
-        <td th:text="${message.username}"></td>
-        <td th:text="${message.nickname}"></td>
-    </tr>
-    </tbody>
-</table>
-<div th:if="${error}">
-    <p th:text="${error}"></p>
+<div layout:fragment="content">
+    <div class="hero-top">
+
+    </div>
+    <div class="hero-list">
+            <div class="infoBox p-2">
+                <div class="infoBoxFlex">
+                    <h1 class="font-1-white hero-list-h3"><mark th:text="${username}" class="cake-username"></mark>님의 케이크</h1>
+                    <a href="#" aria-label="메뉴버튼" class="btn-hamb" style="margin-left: auto;"><i class="bi bi-list fs-3" style="color: white;"></i></a>
+                </div>
+                <div class="message-length" th:each="m, i : ${messages}"
+                                            th:if="${i.index < 1}"
+                                            th:text="'💌 ' + ${i.size} +  ' 개 의 메세지가 도착했어요.'" >
+                </div>
+                <div class="cakeImage">
+                    <img th:src="@{/assets/img/cake2.png}" alt="Cake">
+                </div>
+                <div class="messageCards">
+
+                    <a th:each="message, iterStat : ${messages}" class="message-title"
+                       th:text="${message.nickname}"
+                       th:href="@{|/message/${message.id}|}">
+                    </a>
+
+                </div>
+            </div>
+
+
+
+            <div class="btnList">
+                <button type="button" class="messageBtn" data-toggle="modal" data-target="#messageModal">🖍글 남기기</button>
+                <button type="button" class="shareBtn" th:href="@{|/message?username=${username}|}"><i class="bi bi-share-fill"></i>공유하기</button>
+                </div>
+            <div th:if="${error}">
+                <p th:text="${error}"></p>
+            </div>
+    </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="messageModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="messageModalLabel">Write a Message</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="messageForm" method="post" th:action="@{/message/new}">
+                    <input type="hidden" name="username" th:value="${username}">
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" class="form-control" id="title" name="title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="content">Content</label>
+                        <textarea class="form-control" id="content" name="content" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="nickname">Nickname</label>
+                        <input type="text" class="form-control" id="nickname" name="nickname" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" form="messageForm">Submit</button>
+            </div>
+        </div>
+    </div>
 </div>
-</body>
+    <div class="hero-btom">
+    </div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+</div>
+
+
 </html>

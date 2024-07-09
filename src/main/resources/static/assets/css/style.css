@@ -1,3 +1,4 @@
+@import"https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard-dynamic-subset.css";
 @font-face {
   font-family: "Cafe24Ssurround";
   src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24Ssurround.woff")
@@ -5,6 +6,7 @@
   font-weight: normal;
   font-style: normal;
 }
+
 
 @font-face {
   font-family: "Pretendard-Regular";
@@ -24,16 +26,40 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+ul,ol {
+  padding: 0;
+  list-style: none
+}
+
+.font-1-white {
+  font-family: "Pretendard-Regular";
+  color: white;
+}
+
+.cake-username {
+  color: #51dcdb;
+  background: none;
+  margin-right: 0.1875rem;
+}
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Pretendard-Regular";
   color: #444;
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.25rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  word-break: keep-all;
 }
 
 a {
   text-decoration: none;
   color: #4f92af;
 }
-
+mark {
+  color: inherit;
+  background: inherit
+}
 a:hover {
   color: #5eb8df;
   text-decoration: none;
@@ -52,11 +78,14 @@ h6,
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
+
+
 #header {
   height: 80px;
   padding: 20px 0;
   position: relative;
   z-index: 10;
+  background-color: rgba(0,0,0,0.5);
   font-family: "Pretendard-Regular";
 }
 
@@ -103,6 +132,7 @@ h6,
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
+
 #hero {
   width: 100%;
   height: 100vh;
@@ -112,6 +142,84 @@ h6,
   margin-top: -80px;
   z-index: 9;
   /* countdown */
+}
+.hero-top {
+  height: 10vh;
+  background-color: #222530;
+}
+.hero-btom {
+  height: 10vh;
+  background-color: #222530;
+}
+.hero-list {
+  width: 100%;
+  height: 80vh;
+  background-position: center center;
+  position: relative;
+  background-image: url(../img/list-back.png);
+  background-repeat: repeat-x;
+}
+
+.infoBox{
+  position: relative;
+  margin: 0px auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  max-width: 37.5rem;
+  height: 80vh;
+}
+.infoBoxFlex{
+  display: flex;
+}
+.hero-list-h3 {
+  font-size: 1.625rem;
+  line-height: 2rem;
+  font-weight: bold;
+  font-family: 'Pretendard';
+}
+.message-length{
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 500;
+  color: #c3c9e0;
+  font-family: 'Pretendard-Regular';
+}
+.btnList {
+  flex: 1 1 0%;
+  display: flex;
+  flex-direction: row;
+  -webkit-box-align: center;
+  align-items: center;
+  max-width: 23.4375rem;
+}
+.shareBtn{
+  font-size: 1rem;
+  line-height: 1.25rem;
+  font-weight: bold;
+  width: 100%;
+  height: 3.5rem;
+  border-radius: 1rem;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 14px;
+  background-color: #54596d;
+  border: none;
+}
+.messageBtn{
+  font-size: 1rem;
+  line-height: 1.25rem;
+  font-weight: bold;
+  width: 100%;
+  height: 3.5rem;
+  border-radius: 1rem;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 14px;
+  background-color: pink;
+  border: none;
 }
 
 #hero .hero-container {
@@ -127,6 +235,7 @@ h6,
   text-align: center;
   padding: 0 15px;
 }
+
 
 #hero h1 {
   margin: 0 0 10px 0;
@@ -153,15 +262,39 @@ h6,
   color: rgba(255, 255, 255, 0);
   text-shadow: 1px -15px 4px red;
 }
-.cake {
-  width: 120px;
-  height: 120px;
-  background-image: url("/assets/img/cake.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+
+.cakeImage {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
 }
+.cakeImage img {
+  width: 50.5rem; /* Adjust the width as needed */
+  height: 30rem;
+}
+.messageCards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.message-title {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border-radius: 5px;
+  max-width: 100px; /* Ensure the title fits nicely */
+  word-wrap: break-word;
+  display: block;
+  margin: 10px;
+  padding: 10px;
+  text-decoration: none;
+}
+
+
 .flame {
   position: absolute;
   width: 3px;

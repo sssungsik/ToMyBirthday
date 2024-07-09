@@ -21,7 +21,7 @@ public class Message {
 
     private String content;
 
-    private LocalDateTime createDate;
+    private LocalDateTime createDate = LocalDateTime.now();
     private String username;
     private String nickname;
 
