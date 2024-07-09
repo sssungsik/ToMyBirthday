@@ -50,7 +50,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   word-break: keep-all;
-  background-color: #222530;
 }
 
 a {
@@ -144,10 +143,19 @@ h6,
   z-index: 9;
   /* countdown */
 }
+.hero-top {
+  height: 10vh;
+  background-color: #222530;
+}
+.hero-btom {
+  height: 10vh;
+  background-color: #222530;
+}
 .hero-list {
   width: 100%;
-  height: 100vh;
+  height: 80vh;
   background-position: center center;
+  position: relative;
   background-image: url(../img/list-back.png);
   background-repeat: repeat-x;
 }
@@ -155,9 +163,9 @@ h6,
 .infoBox{
   position: relative;
   margin: 0px auto;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.5);
   max-width: 37.5rem;
-  height: 42.5rem;
+  height: 80vh;
 }
 .infoBoxFlex{
   display: flex;
