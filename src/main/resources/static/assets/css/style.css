@@ -156,6 +156,7 @@ h6,
   height: 80vh;
   background-position: center center;
   position: relative;
+  background-size: cover;
   background-image: url(../img/list-back.png);
   background-repeat: repeat-x;
 }
