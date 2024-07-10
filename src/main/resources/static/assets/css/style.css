@@ -144,16 +144,13 @@ h6,
   /* countdown */
 }
 .hero-top {
-  height: 10vh;
+  height: 80px;
   background-color: #222530;
 }
-.hero-btom {
-  height: 10vh;
-  background-color: #222530;
-}
+
 .hero-list {
   width: 100%;
-  height: 80vh;
+  height: 100vh;
   background-position: center center;
   position: relative;
   background-size: cover;
@@ -166,7 +163,7 @@ h6,
   margin: 0px auto;
   background-color: rgba(0, 0, 0, 0.5);
   max-width: 37.5rem;
-  height: 80vh;
+  height: 100vh;
 }
 .infoBoxFlex{
   display: flex;
@@ -272,24 +269,29 @@ h6,
   width: 50.5rem; /* Adjust the width as needed */
   height: 30rem;
 }
-.messageCards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 20px;
+.overlay {
+  position: absolute;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 .message-title {
-  position: absolute;
   background-color: rgba(0, 0, 0, 0.5);
   color: white;
-  border-radius: 5px;
   max-width: 100px; /* Ensure the title fits nicely */
-  word-wrap: break-word;
-  display: block;
-  margin: 10px;
-  padding: 10px;
   text-decoration: none;
+}
+.list1 {
+  top: 13rem;
+  right: 18rem;
+}
+.list2 {
+  top: 17rem;
+  right: 22rem;
+}
+.list3 {
+  top: 17rem;
+  right: 15rem;
 }
 .paging {
   display: flex;
@@ -306,6 +308,16 @@ h6,
   position: relative;
   top: -4rem;
 }
+
+#message-modal-content {
+  background-color: rgba(17, 21, 28, .9);
+  color:#FFFFFFCF;
+  max-width: 100%;
+
+}
+
+
+
 
 .flame {
   position: absolute;

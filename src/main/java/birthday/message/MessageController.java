@@ -31,6 +31,7 @@ public class MessageController {
             List<Message> messages = messageService.getMessagesByUsername(username);
             if (messages.isEmpty()) {
                 model.addAttribute("error", "No messages found for the user.");
+                model.addAttribute("username", username);
             } else {
                 model.addAttribute("messages", messages);
                 model.addAttribute("username", username);

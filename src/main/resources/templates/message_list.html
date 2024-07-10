@@ -15,20 +15,29 @@
                     <a href="#" aria-label="메뉴버튼" class="btn-hamb" style="margin-left: auto;"><i class="bi bi-list fs-3" style="color: white;"></i></a>
                 </div>
                 <div class="message-length" th:each="m, i : ${messages}"
-                                            th:if="${i.index < 1}"
-                                            th:text="'💌 ' + ${i.size} +  ' 개 의 메세지가 도착했어요.'" >
+                                            th:if="${i.index < 1}">💌
+                                            <mark th:text="${i.size}"
+                                                  style="color: white; box-shadow: inset 0 -3px 0 pink; background: none">
+                                            </mark>개 의 메세지가 도착했어요.
+                </div>
+                <div th:if="${error}">
+                    <div class="message-length">💌 아직 도착한 메세지가 없어요.
+                    </div>
                 </div>
                 <div class="cakeImage">
                     <img th:src="@{/assets/img/cake2.png}" alt="Cake">
                 </div>
-                <div class="messageCards">
 
-                    <a th:each="message, iterStat : ${messages}" class="message-title"
-                       th:text="${message.nickname}"
-                       th:href="@{|/message/${message.id}|}">
-                    </a>
+                <div th:each="message, iterStat : ${messages}">
+                    <div th:class="|overlay message-title list${iterStat.index + 1}|">
 
+                        <a th:text="${message.nickname}"
+                            th:href="@{|/message/${message.id}|}">
+                        </a>
+                    </div>
                 </div>
+
+
                 <div class="paging">
                     <div class="paging-form font-1-white">
                         <i class="bi bi-chevron-double-left"></i> 1 / 1 <i class="bi bi-chevron-double-right"></i>
@@ -43,21 +52,17 @@
 
 
 
-            <div th:if="${error}">
-                <p th:text="${error}"></p>
-            </div>
+
     </div>
 
 
 <!-- Modal -->
 <div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="messageModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
+        <div class="modal-content" id="message-modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="messageModalLabel">Write a Message</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <h5 class="modal-title font-1" id="messageModalLabel">Write a Message</h5>
+                    <a data-dismiss="modal" aria-label="Close" style="cursor: pointer"><i class="bi bi-x" ></i></a>
             </div>
             <div class="modal-body">
                 <form id="messageForm" method="post" th:action="@{/message/new}">
@@ -83,8 +88,7 @@
         </div>
     </div>
 </div>
-    <div class="hero-btom">
-    </div>
+
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
