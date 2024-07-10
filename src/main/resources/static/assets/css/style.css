@@ -273,25 +273,44 @@ h6,
   position: absolute;
   padding: 10px;
   border-radius: 5px;
-}
-
-.message-title {
   background-color: rgba(0, 0, 0, 0.5);
   color: white;
-  max-width: 100px; /* Ensure the title fits nicely */
-  text-decoration: none;
+  /*max-width: 100px; !* Ensure the title fits nicely *!*/
 }
+
 .list1 {
   top: 13rem;
   right: 18rem;
+  img {
+    position: absolute;
+    width: 9rem;
+    height: 6rem;
+    top: -6rem;
+    left: -2rem;
+  }
 }
 .list2 {
   top: 17rem;
   right: 22rem;
+  img {
+    position: absolute;
+    width: 9rem;
+    height: 6rem;
+    top: -6rem;
+    left: -2rem;
+  }
+
 }
 .list3 {
   top: 17rem;
   right: 15rem;
+  img {
+    position: absolute;
+    width: 9rem;
+    height: 6rem;
+    top: -6rem;
+    left: -2rem;
+  }
 }
 .paging {
   display: flex;
@@ -313,6 +332,10 @@ h6,
   background-color: rgba(17, 21, 28, .9);
   color:#FFFFFFCF;
   max-width: 100%;
+
+}
+
+.flame :where(h1, h2) {
 
 }
 

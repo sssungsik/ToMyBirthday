@@ -27,15 +27,20 @@
                 <div class="cakeImage">
                     <img th:src="@{/assets/img/cake2.png}" alt="Cake">
                 </div>
+                <div><a href="">
+                    <b></b></a></div>
 
-                <div th:each="message, iterStat : ${messages}">
-                    <div th:class="|overlay message-title list${iterStat.index + 1}|">
 
+                <div  th:each="message, iterStat : ${messages}">
+
+                    <div th:class="|overlay list${iterStat.index + 1}|">
+                        <img th:src="@{/assets/img/candles/red.png}">
                         <a th:text="${message.nickname}"
                             th:href="@{|/message/${message.id}|}">
                         </a>
                     </div>
                 </div>
+                <div><a href=""><b></b></a></div>
 
 
                 <div class="paging">
@@ -48,12 +53,9 @@
                     <button type="button" class="shareBtn" th:href="@{|/message?username=${username}|}"><i class="bi bi-share-fill"></i>공유하기</button>
                 </div>
             </div>
-
-
-
-
-
     </div>
+
+
 
 
 <!-- Modal -->
