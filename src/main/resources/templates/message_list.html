@@ -35,7 +35,7 @@
 
                     <div th:class="|overlay list${iterStat.index + 1}|">
                         <img th:src="@{/assets/img/candles/red.png}">
-                        <a th:text="${message.nickname}"
+                        <a th:text="${message.nickname}" class="font-2"
                             th:href="@{|/message/${message.id}|}">
                         </a>
                     </div>
