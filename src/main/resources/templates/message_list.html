@@ -6,7 +6,8 @@
 
 <div layout:fragment="content">
     <div class="hero-top">
-
+    <p th:each="u : ${users}" th:text="${u.birthday}" id="birthday" hidden="hidden"></p>
+        <p class="font-1-white text-center"> 생일까지 D-<span id="daysUntilNextBirthday"></span></p>
     </div>
     <div class="hero-list">
             <div class="infoBox p-2">
@@ -34,10 +35,11 @@
                 <div  th:each="message, iterStat : ${messages}">
 
                     <div th:class="|overlay list${iterStat.index + 1}|">
-                        <img th:src="@{/assets/img/candles/red.png}">
+
                         <a th:text="${message.nickname}" class="font-2"
                             th:href="@{|/message/${message.id}|}">
                         </a>
+                        <img th:src="@{/assets/img/candles/red.png}">
                     </div>
                 </div>
                 <div><a href=""><b></b></a></div>
@@ -95,6 +97,33 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script>
+        function calculateDaysUntilNextBirthday(birthday) {
+            const today = new Date();
+            const birthDate = new Date(birthday);
+
+            let nextBirthday = new Date(today.getFullYear(), birthDate.getMonth(), birthDate.getDate());
+
+            if (nextBirthday < today) {
+                nextBirthday.setFullYear(today.getFullYear() + 1);
+            }
+
+            const oneDay = 24 * 60 * 60 * 1000;
+            const daysUntilNextBirthday = Math.round((nextBirthday - today) / oneDay);
+
+            return daysUntilNextBirthday;
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const birthdayElement = document.getElementById('birthday');
+            const daysUntilNextBirthdayElement = document.getElementById('daysUntilNextBirthday');
+
+            const birthday = birthdayElement.textContent;
+            const daysUntilNextBirthday = calculateDaysUntilNextBirthday(birthday);
+
+            daysUntilNextBirthdayElement.textContent = daysUntilNextBirthday;
+        });
+    </script>
 
 </div>
 

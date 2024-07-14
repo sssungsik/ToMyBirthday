@@ -2,6 +2,7 @@ package birthday.message;
 
 
 
+import birthday.user.SiteUser;
 import birthday.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -29,12 +30,16 @@ public class MessageController {
         }
         if (username != null) {
             List<Message> messages = messageService.getMessagesByUsername(username);
+            List<SiteUser> users = userService.getUserByUsername(username);
+       ;
             if (messages.isEmpty()) {
                 model.addAttribute("error", "No messages found for the user.");
                 model.addAttribute("username", username);
+                model.addAttribute("users", users);
             } else {
                 model.addAttribute("messages", messages);
                 model.addAttribute("username", username);
+                model.addAttribute("users", users);
             }
         } else {
             model.addAttribute("error", "User not found.");
