@@ -1,131 +1,164 @@
-<html xmlns:th="http://www.thymeleaf.org"
-      layout:decorate="~{layout}">
+<html xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout}">
 <head>
- <!--   <link rel="stylesheet" type="text/css" th:href="@{/assets/css/index.css}">-->
+    <!-- <link rel="stylesheet" type="text/css" th:href="@{/assets/css/index.css}"> -->
 </head>
 
 <div layout:fragment="content">
     <div class="hero-top">
-    <p th:each="u : ${users}" th:text="${u.birthday}" id="birthday" hidden="hidden"></p>
-        <p class="font-1-white text-center"> 생일까지 D-<span id="daysUntilNextBirthday"></span></p>
+
     </div>
     <div class="hero-list">
-            <div class="infoBox p-2">
-                <div class="infoBoxFlex">
-                    <h1 class="font-1-white hero-list-h3"><mark th:text="${username}" class="cake-username"></mark>님의 케이크</h1>
-                    <a href="#" aria-label="메뉴버튼" class="btn-hamb" style="margin-left: auto;"><i class="bi bi-list fs-3" style="color: white;"></i></a>
-                </div>
-                <div class="message-length" th:each="m, i : ${messages}"
-                                            th:if="${i.index < 1}">💌
-                                            <mark th:text="${i.size}"
-                                                  style="color: white; box-shadow: inset 0 -3px 0 pink; background: none; font-family: 'Pretendard'">
-                                            </mark>개 의 메세지가 도착했어요.
-                </div>
-                <div th:if="${error}">
-                    <div class="message-length">💌 아직 도착한 메세지가 없어요.
-                    </div>
-                </div>
-                <div class="cakeImage">
-                    <img th:src="@{/assets/img/cake2.png}" alt="Cake">
-                </div>
-                <div><a href="">
-                    <b></b></a></div>
+        <div class="infoBox p-2">
+            <div class="infoBoxFlex">
+                <h1 class="font-1-white hero-list-h3">
+                    <mark th:text="${username}" class="cake-username"></mark>님의 케이크
+                </h1>
+                <a href="#" aria-label="메뉴버튼" class="btn-hamb" style="margin-left: auto;">
+                    <i class="bi bi-list fs-3" style="color: white;"></i>
+                </a>
+            </div>
+            <div class="message-length" th:each="m, i : ${messages}" th:if="${i.index < 1}">💌
+                <mark th:text="${i.size}" style="color: white; box-shadow: inset 0 -3px 0 pink; background: none; font-family: 'Pretendard'"></mark>개의 메세지가 도착했어요.
+            </div>
+            <div th:if="${error}">
+                <div class="message-length">💌 아직 도착한 메세지가 없어요.</div>
+            </div>
+            <div class="cakeImage">
+                <img th:src="@{/assets/img/cake2.png}" alt="Cake">
+            </div>
+            <div><a href=""><b></b></a></div>
 
-
-                <div  th:each="message, iterStat : ${messages}">
-
+            <div id="messages-container">
+                <!-- 메시지 목록이 여기에 추가됩니다. -->
+                <div th:each="message, iterStat : ${messages}">
                     <div th:class="|overlay list${iterStat.index + 1}|">
-
-                        <a th:text="${message.nickname}" class="font-2"
-                            th:href="@{|/message/${message.id}|}">
-                        </a>
+                        <a th:text="${message.nickname}" class="font-2" th:href="@{|/message/${message.id}|}"></a>
                         <img th:src="@{/assets/img/candles/red.png}">
                     </div>
                 </div>
-                <div><a href=""><b></b></a></div>
+            </div>
 
-
-                <div class="paging">
-                    <div class="paging-form font-1-white">
-                        <i class="bi bi-chevron-double-left"></i> 1 / 1 <i class="bi bi-chevron-double-right"></i>
-                    </div>
-                </div>
-                <div class="btnList">
-                    <button type="button" class="messageBtn" data-toggle="modal" data-target="#messageModal">🖍글 남기기</button>
-                    <button type="button" class="shareBtn" th:href="@{|/message?username=${username}|}"><i class="bi bi-share-fill"></i>공유하기</button>
+            <div class="paging">
+                <div class="paging-form font-1-white">
+                    <i id="prev-page" class="bi bi-chevron-double-left"></i>
+                    <span id="page-info">1 / 1</span>
+                    <i id="next-page" class="bi bi-chevron-double-right"></i>
                 </div>
             </div>
-    </div>
 
-
-
-
-<!-- Modal -->
-<div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="messageModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content" id="message-modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title font-1" id="messageModalLabel">Write a Message</h5>
-                    <a data-dismiss="modal" aria-label="Close" style="cursor: pointer"><i class="bi bi-x" ></i></a>
-            </div>
-            <div class="modal-body">
-                <form id="messageForm" method="post" th:action="@{/message/new}">
-                    <input type="hidden" name="username" th:value="${username}">
-                    <div class="form-group">
-                        <label for="title">Title</label>
-                        <input type="text" class="form-control" id="title" name="title" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="content">Content</label>
-                        <textarea class="form-control" id="content" name="content" rows="3" required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="nickname">Nickname</label>
-                        <input type="text" class="form-control" id="nickname" name="nickname" required>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary" form="messageForm">Submit</button>
+            <div class="btnList">
+                <button type="button" class="messageBtn" data-toggle="modal" data-target="#messageModal">🖍글 남기기</button>
+                <button type="button" class="shareBtn" th:data-href="@{|/message?username=${username}|}" data-toggle="modal" data-target="#shareModal">
+                    <i class="bi bi-share-fill"></i> 공유하기
+                </button>
             </div>
         </div>
     </div>
-</div>
 
+    <!-- Modal -->
+    <div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="messageModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" id="message-modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title font-1" id="messageModalLabel">Write a Message</h5>
+                    <a data-dismiss="modal" aria-label="Close" style="cursor: pointer"><i class="bi bi-x"></i></a>
+                </div>
+                <div class="modal-body">
+                    <form id="messageForm" method="post" th:action="@{/message/new}">
+                        <input type="hidden" name="username" th:value="${username}">
+                        <div class="form-group">
+                            <label for="title">Title</label>
+                            <input type="text" class="form-control" id="title" name="title" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="content">Content</label>
+                            <textarea class="form-control" id="content" name="content" rows="3" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="nickname">Nickname</label>
+                            <input type="text" class="form-control" id="nickname" name="nickname" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" form="messageForm">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Share Modal -->
+    <div class="modal fade" id="shareModal" tabindex="-1" role="dialog" aria-labelledby="shareModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="shareModalLabel">Share This Message</h5>
+                    <a data-dismiss="modal" aria-label="Close" style="cursor: pointer"><i class="bi bi-x"></i></a>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="shareUrl">Share URL</label>
+                        <input type="text" class="form-control" id="shareUrl" readonly>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script>
-        function calculateDaysUntilNextBirthday(birthday) {
-            const today = new Date();
-            const birthDate = new Date(birthday);
+        document.addEventListener('DOMContentLoaded', function() {
+            const messages = Array.from(document.querySelectorAll('#messages-container > div'));
+            const messagesPerPage = 6;
+            let currentPage = 0;
 
-            let nextBirthday = new Date(today.getFullYear(), birthDate.getMonth(), birthDate.getDate());
-
-            if (nextBirthday < today) {
-                nextBirthday.setFullYear(today.getFullYear() + 1);
+            function showPage(page) {
+                const start = page * messagesPerPage;
+                const end = start + messagesPerPage;
+                messages.forEach((msg, index) => {
+                    msg.style.display = (index >= start && index < end) ? 'block' : 'none';
+                });
+                document.getElementById('page-info').textContent = `${page + 1} / ${Math.ceil(messages.length / messagesPerPage)}`;
+                document.getElementById('prev-page').style.display = page === 0 ? 'none' : 'inline';
+                document.getElementById('next-page').style.display = end >= messages.length ? 'none' : 'inline';
             }
 
-            const oneDay = 24 * 60 * 60 * 1000;
-            const daysUntilNextBirthday = Math.round((nextBirthday - today) / oneDay);
+            document.getElementById('prev-page').addEventListener('click', () => {
+                if (currentPage > 0) {
+                    currentPage--;
+                    showPage(currentPage);
+                }
+            });
 
-            return daysUntilNextBirthday;
-        }
+            document.getElementById('next-page').addEventListener('click', () => {
+                if ((currentPage + 1) * messagesPerPage < messages.length) {
+                    currentPage++;
+                    showPage(currentPage);
+                }
+            });
 
+            showPage(currentPage);
+        });
         document.addEventListener('DOMContentLoaded', function() {
-            const birthdayElement = document.getElementById('birthday');
-            const daysUntilNextBirthdayElement = document.getElementById('daysUntilNextBirthday');
+            const shareButton = document.querySelector('.shareBtn');
+            const shareModal = document.getElementById('shareModal');
+            const shareUrlInput = document.getElementById('shareUrl');
 
-            const birthday = birthdayElement.textContent;
-            const daysUntilNextBirthday = calculateDaysUntilNextBirthday(birthday);
+            shareButton.addEventListener('click', function() {
+                // Get URL from data-href attribute
+                const url = this.getAttribute('data-href');
+                // Set the URL to the input field in the modal
+                shareUrlInput.value = url;
+            });
 
-            daysUntilNextBirthdayElement.textContent = daysUntilNextBirthday;
+            // Additional event listeners or JavaScript code if needed
         });
     </script>
-
 </div>
-
 
 </html>

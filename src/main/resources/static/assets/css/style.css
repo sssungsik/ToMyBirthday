@@ -313,7 +313,7 @@ h6,
 
 
 
-.list1 {
+.list1, .list7, .list13 {
   top: 13.8rem;
   right: 18.5rem;
   img {
@@ -321,7 +321,7 @@ h6,
     left: 0.7rem;
   }
 }
-.list2 {
+.list2, .list8 {
   top: 297px;
   right: 340px;
   img {
@@ -330,7 +330,7 @@ h6,
   }
 
 }
-.list3 {
+.list3, .list9 {
   top: 297px;
   right: 242px;
   img {
@@ -338,7 +338,7 @@ h6,
     left: 14px;
   }
 }
-.list4 {
+.list4, .list10 {
   top: 372px;
   right: 293px;
   img {
@@ -346,6 +346,23 @@ h6,
     left: 14px;
   }
 }
+.list5, .list11 {
+  top: 372px;
+  right: 380px;
+  img {
+    top: -102px;
+    left: 14px;
+  }
+}
+.list6, .list12 {
+  top: 372px;
+  right: 210px;
+  img {
+    top: -102px;
+    left: 14px;
+  }
+}
+
 .paging {
   display: flex;
   justify-content: center;
