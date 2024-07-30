@@ -5,7 +5,6 @@
 
 <div layout:fragment="content">
     <div class="hero-top">
-
     </div>
     <div class="hero-list">
         <div class="infoBox p-2">
@@ -13,8 +12,8 @@
                 <h1 class="font-1-white hero-list-h3">
                     <mark th:text="${username}" class="cake-username"></mark>님의 케이크
                 </h1>
-                <a href="#" aria-label="메뉴버튼" class="btn-hamb" style="margin-left: auto;">
-                    <i class="bi bi-list fs-3" style="color: white;"></i>
+                <a href="#" aria-label="메뉴버튼" class="btn-hamb" data-bs-toggle="offcanvas" data-bs-target="#sideMenu" aria-controls="sideMenu" style="margin-left: auto;">
+                    <i class="bi bi-list fs-3"></i>
                 </a>
             </div>
             <div class="message-length" th:each="m, i : ${messages}" th:if="${i.index < 1}">💌
@@ -29,10 +28,9 @@
             <div><a href=""><b></b></a></div>
 
             <div id="messages-container">
-                <!-- 메시지 목록이 여기에 추가됩니다. -->
                 <div th:each="message, iterStat : ${messages}">
                     <div th:class="|overlay list${iterStat.index + 1}|">
-                        <a th:text="${message.nickname}" class="font-2" th:href="@{|/message/${message.id}|}"></a>
+                        <a th:text="${message.nickname}" class="font-2 message-link" th:href="@{|/message/${message.id}|}" data-toggle="modal" data-target="#messageDetailModal"></a>
                         <img th:src="@{/assets/img/candles/red.png}">
                     </div>
                 </div>
@@ -47,72 +45,108 @@
             </div>
 
             <div class="btnList">
-                <button type="button" class="messageBtn" data-toggle="modal" data-target="#messageModal">🖍글 남기기</button>
-                <button type="button" class="shareBtn" th:data-href="@{|/message?username=${username}|}" data-toggle="modal" data-target="#shareModal">
+                <button type="button" class="messageBtn hover-up" data-toggle="modal" data-target="#messageModal">
+                    <i class="bi bi-magic"></i> 글 남기기</button>
+                <button type="button" class="shareBtn hover-up" th:data-href="@{|/message?username=${username}|}" data-toggle="modal" data-target="#shareModal">
                     <i class="bi bi-share-fill"></i> 공유하기
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- Modal -->
+    <!-- 사이드 메뉴 (Offcanvas) -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="sideMenu" aria-labelledby="sideMenuLabel">
+
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="sideMenuLabel"></h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/user/login}"><i class="bi bi-door-open"></i>　로그인</a>
+            <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/user/logout}"><i class="bi bi-box-arrow-in-right"></i>　로그아웃</a>
+            <a class="nav-link" th:href="@{/user/signup}"><i class="bi bi-person-plus"></i>　회원가입</a>
+        </div>
+
+    </div>
+
+
+    <!-- Message Detail Modal -->
+    <div class="modal fade" id="messageDetailModal" tabindex="-1" role="dialog" aria-labelledby="messageDetailModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content" id="messageDetail-modal">
+                <div class="cardBackground">
+                    <div class="cardBody">
+                        <div class="modal-body">
+                            <div id="messageDetailContent">Loading...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Message Write Modal -->
     <div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="messageModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content" id="message-modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title font-1" id="messageModalLabel">Write a Message</h5>
-                    <a data-dismiss="modal" aria-label="Close" style="cursor: pointer"><i class="bi bi-x"></i></a>
-                </div>
-                <div class="modal-body">
-                    <form id="messageForm" method="post" th:action="@{/message/new}">
-                        <input type="hidden" name="username" th:value="${username}">
-                        <div class="form-group">
-                            <label for="title">Title</label>
-                            <input type="text" class="form-control" id="title" name="title" required>
+                <div class="cardBackground">
+                    <div class="cardBody">
+                        <form id="messageForm" method="post" th:action="@{/message/new}">
+                         <div class="modal-body">
+
+                                <input type="hidden" name="username" th:value="${username}">
+                                <div class="form-group" style="border-bottom: 1px solid">
+                                    <label for="title" hidden="hidden">Title</label>
+                                    <input type="text" style="font-size: 23px" class="form-control" id="title" name="title" placeholder="제목을 입력해 주세요." required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="content" hidden="hidden">Content</label>
+                                    <textarea class="form-control" style="font-size: 20px" id="content" name="content" rows="3" placeholder="내용을 입력해 주세요." required></textarea>
+                                </div>
+
+
                         </div>
-                        <div class="form-group">
-                            <label for="content">Content</label>
-                            <textarea class="form-control" id="content" name="content" rows="3" required></textarea>
+                        <div class="modal-footer">
+                            <div class="form-group text-start">
+                                <label for="nickname">From.</label>
+                                <input type="text" class="form-control"  style="font-size: 20px" id="nickname" name="nickname" placeholder="닉네임을 입력해 주세요." required>
+                            </div>
+                            <div class="form-group">
+                            <button type="submit" class="btn btn-primary writeBtn" form="messageForm">글 남기기</button>
+                            </div>
+
                         </div>
-                        <div class="form-group">
-                            <label for="nickname">Nickname</label>
-                            <input type="text" class="form-control" id="nickname" name="nickname" required>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary" form="messageForm">Submit</button>
+                        </form>
+
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     <!-- Share Modal -->
     <div class="modal fade" id="shareModal" tabindex="-1" role="dialog" aria-labelledby="shareModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="shareModalLabel">Share This Message</h5>
-                    <a data-dismiss="modal" aria-label="Close" style="cursor: pointer"><i class="bi bi-x"></i></a>
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content" id="shareModalBox">
+                <div class="modal-header shareModal-Top">
+                    <h4>공유</h4>
+                    <div><h5 th:text="${username} + '님의 케이크'"></h5></div>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="shareUrl">Share URL</label>
                         <input type="text" class="form-control" id="shareUrl" readonly>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary shareBtn2">복사</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // 페이징 기능
             const messages = Array.from(document.querySelectorAll('#messages-container > div'));
             const messagesPerPage = 6;
             let currentPage = 0;
@@ -143,22 +177,66 @@
             });
 
             showPage(currentPage);
-        });
-        document.addEventListener('DOMContentLoaded', function() {
+
+            // 메시지 상세 내용 보기
+            document.querySelectorAll('.message-link').forEach(link => {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault(); // 기본 링크 클릭 동작 방지
+                    const url = this.getAttribute('href');
+
+                    // AJAX 요청
+                    fetch(url)
+                        .then(response => response.text())
+                        .then(html => {
+                            // 모달의 콘텐츠 업데이트
+                            document.getElementById('messageDetailContent').innerHTML = html;
+                            // 모달 열기
+                            $('#messageDetailModal').modal('show');
+                        })
+                        .catch(error => console.error('Error fetching message detail:', error));
+                });
+            });
+
+            // 공유 URL 설정
             const shareButton = document.querySelector('.shareBtn');
-            const shareModal = document.getElementById('shareModal');
             const shareUrlInput = document.getElementById('shareUrl');
 
-            shareButton.addEventListener('click', function() {
+            shareButton.addEventListener('click', function () {
                 // Get URL from data-href attribute
                 const url = this.getAttribute('data-href');
                 // Set the URL to the input field in the modal
                 shareUrlInput.value = url;
             });
 
-            // Additional event listeners or JavaScript code if needed
+            // 모달 닫기 시 배경 제거 및 초기화
+            $('#messageDetailModal, #shareModal').on('hidden.bs.modal', function () {
+                $('body').removeClass('modal-open');
+                $('.modal-backdrop').remove();
+            });
+
+            const shareBtn2 = document.querySelector('.shareBtn2');
+            const shareUrlInput2 = document.getElementById('shareUrl');
+            const copyMessage = document.getElementById('copyMessage');
+
+            shareBtn2.addEventListener('click', function() {
+                // Select the text in the input field
+                shareUrlInput.select();
+                shareUrlInput.setSelectionRange(0, 99999); // For mobile devices
+
+                // Copy the text to the clipboard
+                document.execCommand('copy');
+
+                // Show the copy confirmation message
+                copyMessage.style.display = 'block';
+
+                // Hide the message after 2 seconds
+                setTimeout(() => {
+                    copyMessage.style.display = 'none';
+                }, 2000);
+            });
         });
     </script>
+
 </div>
 
 </html>

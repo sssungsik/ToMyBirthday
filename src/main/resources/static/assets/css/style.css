@@ -193,6 +193,7 @@ h6,
   margin: auto;
 }
 .shareBtn{
+  margin: 5px;
   font-size: 1rem;
   line-height: 1.25rem;
   font-weight: bold;
@@ -203,11 +204,12 @@ h6,
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 14px;
-  background-color: #54596d;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 4px 14px;
+  background-color: rgba(84,89,109,0.8);
   border: none;
 }
 .messageBtn{
+  margin: 5px;
   font-size: 1rem;
   line-height: 1.25rem;
   font-weight: bold;
@@ -219,7 +221,7 @@ h6,
   justify-content: center;
   align-items: center;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 14px;
-  background-color: pink;
+  background-color: rgba(255,192,203, 0.8);
   border: none;
 }
 
@@ -379,10 +381,184 @@ h6,
   top: -4rem;
 }
 
-#message-modal-content {
-  background-color: rgba(17, 21, 28, .9);
-  color:#FFFFFFCF;
+#messageDetail {
+  border: none;
+  background: transparent;
+  img {
+    position: absolute;
+    width: 50px;
+    top: -307px
+  }
+  .deco1 {
+    right: -20px;
+  }
+  .deco2 {
+    right: 70px;
+  }
+  .deco3 {
+    right: 160px;
+  }
+  .deco4{
+    right: 230px;
+  }
+  .deco5 {
+    right: 320px;
+  }
+  .nameDeco {
+    font-family: 'Ownglyph_jooreeletter-Rg', "Open Sans", sans-serif;
+    background-image: url("/assets/img/letter.png");
+    position: absolute;
+    border-radius: 50%;
+    color: white;
+    font-size: 23px;
+    text-decoration: none;
+    padding: 15px;
+    background-color: rgba(255, 0, 0, 0.4);
+    text-shadow: 0px 2px 2px rgba(0, 0, 0, .9);
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 2px;
+    top: -75px;
+    right: 175px;
+
+  }
+  .card-body {
+    text-shadow: 0px 2px 2px rgba(0, 0, 0, .9);
+    color: white;
+  }
+}
+
+#messageDetail-modal {
+  input, textarea {
+    font-family: 'Ownglyph_jooreeletter-Rg', "Open Sans", sans-serif;
+  }
+  background: pink;
+  background-image: url("/assets/img/letter.png");
+  border-radius: 25px;
+  padding: 2px;
+  margin: 1px;
+  .cardBackground{
+    border: 0.1875rem solid rgba(255,255,255,.5);
+    border-radius: 25px;
+    padding: 1px;
+    margin: 1px;
+
+    .cardBody {
+      border-radius: 25px;
+      background-color: rgba(0, 0, 0, 0.2);
+      background-image: url("/assets/img/letter.png");
+      margin: 5px;
+      .modal-body {
+        input, textarea, input::placeholder, textarea::placeholder {
+          margin: 5px;
+          padding: 5px;
+          text-align: left;
+          background: none;
+          border: none;
+          color: white;
+        }
+      }
+      .modal-footer {
+        background: rgb(255, 47, 54);
+        background-image: url("/assets/img/letter.png");
+        border: none;
+        justify-content: space-between;
+        input::placeholder {
+          color: white;
+          text-align: left;
+        }
+        input {
+          background-color: rgba(0, 0, 0, 0.2);
+          margin: 5px;
+          padding: 5px;
+          text-align: left;
+          border: none;
+          color: white;
+        }
+        .writeBtn {
+          background-color: rgba(0, 0, 0, 0.2);
+          border: none;
+          padding: 10px;
+        }
+        .writeBtn:hover {
+          background-color: rgba(0, 0, 0, 0.4);
+          transition: color .5s, background-color .5s, border-color .5s;
+        }
+      }
+    }
+  }
+  color: white;
+  box-shadow: 2px 7px 15px 8px rgba(0,0,0,0.3);
   max-width: 100%;
+
+}
+
+#message-modal-content {
+  input, textarea {
+    font-family: 'Ownglyph_jooreeletter-Rg', "Open Sans", sans-serif;
+  }
+  background: rgb(255, 47, 54);
+  background-image: url("/assets/img/letter.png");
+  border-radius: 25px;
+  padding: 2px;
+  margin: 1px;
+
+
+  .cardBackground{
+    border: 0.1875rem solid rgba(255,255,255,.5);
+    border-radius: 25px;
+    padding: 1px;
+    margin: 1px;
+
+  .cardBody {
+    border-radius: 25px;
+    background-color: rgba(0, 0, 0, 0.2);
+    background-image: url("/assets/img/letter.png");
+    margin: 5px;
+    .modal-body {
+      input, textarea, input::placeholder, textarea::placeholder {
+        margin: 5px;
+        padding: 5px;
+        text-align: left;
+        background: none;
+        border: none;
+        color: white;
+        text-shadow: 0px 2px 2px rgba(0, 0, 0, .9);
+      }
+    }
+    .modal-footer {
+      background: rgb(255, 47, 54);
+      background-image: url("/assets/img/letter.png");
+      border: none;
+      justify-content: space-between;
+      input::placeholder {
+        color: white;
+        text-align: left;
+      }
+      input {
+        background-color: rgba(0, 0, 0, 0.2);
+        margin: 5px;
+        padding: 5px;
+        text-align: left;
+        border: none;
+        color: white;
+        text-shadow: 0px 2px 2px rgba(0, 0, 0, .9);
+      }
+      .writeBtn {
+        background-color: rgba(0, 0, 0, 0.2);
+        border: none;
+        padding: 10px;
+      }
+      .writeBtn:hover {
+        background-color: rgba(0, 0, 0, 0.4);
+        transition: color .5s, background-color .5s, border-color .5s;
+      }
+    }
+  }
+  }
+
+  color: white;
+  box-shadow: 2px 7px 15px 8px rgba(0,0,0,0.3);
+  max-width: 100%;
+
 
 }
 
@@ -893,4 +1069,53 @@ input[type=submit] {
   to {
     transform: translateY(0);
   }
+}
+
+
+#shareModalBox {
+  .shareModal-Top {
+    flex-direction: column;
+  }
+  .shareBtn2 {
+    width: 100%;
+  }
+  border-color: rgba(0,0,0,.2);
+  background-color: rgba(0,0,0,.4);
+  color: white;
+  box-shadow: 2px 7px 15px 8px rgba(0,0,0,0.3);
+}
+
+#sideMenu {
+  font-family: 'Pretendard-Regular';
+
+  background-color: #222530;
+  border: none;
+  a {
+    font-size: 25px;
+    text-decoration: none;
+    color: white;
+    text-shadow: 0px 2px 2px rgba(0, 0, 0, .9);
+  }
+}
+
+.hover-up {
+  -webkit-transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
+  transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
+}
+
+.hover-up:hover {
+  -webkit-transform: translateY(-5px);
+  transform: translateY(-5px);
+  -webkit-transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
+  transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
+}
+
+.btn-hamb {
+  color: white;
+}
+
+.btn-hamb:hover {
+  color: pink;
+  transition: color .5s, background-color .5s, border-color .5s;
+  text-shadow: 0px 2px 2px rgba(0, 0, 0, .9);
 }
