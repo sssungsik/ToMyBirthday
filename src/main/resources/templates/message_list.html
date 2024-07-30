@@ -1,9 +1,10 @@
 <html xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout}">
 <head>
-    <!-- <link rel="stylesheet" type="text/css" th:href="@{/assets/css/index.css}"> -->
+    <title th:text="${username} + '님의 케이크'"></title>
 </head>
 
 <div layout:fragment="content">
+
     <div class="hero-top">
     </div>
     <div class="hero-list">
@@ -64,7 +65,7 @@
         <div class="offcanvas-body">
             <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/user/login}"><i class="bi bi-door-open"></i>　로그인</a>
             <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/user/logout}"><i class="bi bi-box-arrow-in-right"></i>　로그아웃</a>
-            <a class="nav-link" th:href="@{/user/signup}"><i class="bi bi-person-plus"></i>　회원가입</a>
+            <a class="nav-link" th:href="@{/user/signup}" target="_blank"><i class="bi bi-person-plus"></i>　회원가입</a>
         </div>
 
     </div>
@@ -142,6 +143,7 @@
             </div>
         </div>
     </div>
+
 
 
     <script>
