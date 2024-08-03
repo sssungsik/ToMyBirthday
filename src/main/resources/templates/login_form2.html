@@ -65,18 +65,15 @@
                 class="login-img"
         /><span class="login-span">카카오계정으로 계속하기</span></a>
       </li>
-      <li class="login-li">
+      <!--<li class="login-li">
         <a href="#" class="naver-a"><img
                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAJXSURBVHgBvZg/aBVBEMa/2bt7EhU0IBi7dEIawc5OEEs7RRubaKVNygQl6XzyCgUtLMTGwhSxt9NKCKTQzjJKUAQRRIvk3v1Zv03E+nZ3Jj943BY3937s3s7Mnkz7xiMCEYxLlKsi0sbEee9PNmg+wMv80BgBvjtE4j2Wu667hkMiWpBI7/oHnJEzOARSBInMt+ieUHIGxiQK7r9TV5uuuw5jkgUPov2jqZ+ehyF5gsCseBlzNksYkSsI5qhLLdqHMCJbkBRMPYtWS60hGJhlAn7FpT4CZbQEA2e51CtQRlMwVJm1vXbvChRRFdx/oCuec6nnoIS6IDndoJtQ8jgUsBAMa32zRncRCtgIhgd7/5Kp5xwyMRNEqDKQSW7qsRQMu/pyg/4OMogWZEf9g5c/g2/3fq329QISie+oga/iMeawH3a/PyHebexi9xgSSFri0pVPeWB4GxGyMMLoPhKQ2EMTxT5WKC9wNNf6dovBpwZG9v9+g1uzpEPT/2CRz73IEodDT3fhv6L7xqxdPEKxTtN1GJIlyFnsKxT3ONqGEdl5kJI7zCW3MXBXx6KSqPml4b2Im8AAFUHOYl3Chdz4CcqolTpK/m7FL2L4rh6Eai0+KqNNFuAlKKLeLFSuesYMuwkl1AUPUk95I1QBKGDSblHyC2fxMYc1MjHrByupJk5kA5mYNqwNilXO5w4yMBWcEdl2grvIqDKmgoECxRumnhdIxFwwfGxn6lnhptlCAuaCAUr+ZNpZRkKVKRn8OiaAZ4xvvHSIhA3Fu0aaWwI3+NsNu/VffwGxe7W0GWwE5QAAAABJRU5ErkJggg=="
                 class="login-img"
         /><span class="login-span">네이버로 계속하기</span></a>
-      </li>
+      </li>-->
       <li class="login-li">
         <a href="#" class="google-a"  id="login-button"
-        ><img
-                th:src="@{/assets/img/2fpchc6gsov07l5ilu48nrjsnq.png}"
-                class="login-img"
-        /><span class="login-span">회원 아이디로 계속하기</span></a>
+        ><i class="bi bi-cake-fill login-img"></i> <span class="login-span">회원 아이디로 계속하기</span></a>
       </li>
     </ul>
   </div>
@@ -95,7 +92,9 @@
 
         <input type="password" id="password" name="password" placeholder="비밀번호를 입력하세요." required>
         <br>
-        <input type="submit" value="바로가입" id="register"/>
+
+        <input type="submit" value="로그인" id="register"/>
+        <input type="button" value="바로가입" id="regBtn" th:onclick="|location.href='@{/user/signup}'|" />
       </form>
     </div>
   </div>
