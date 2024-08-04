@@ -8,8 +8,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.Map;
 
 
 @RequiredArgsConstructor
@@ -45,11 +47,28 @@ public class UserController {
             return "signup_form";
         }
 
-            return "redirect:/";
+        return "redirect:/";
     }
     @GetMapping("/login")
     public String login() {
         return "login_form2";
     }
 
+
+    @PostMapping("/kakao-login")
+    public String kakaoLogin(@RequestBody Map<String, String> userInfo) {
+        String kakaoId = userInfo.get("id");
+        String nickname = userInfo.get("nickname");
+        String profileImage = userInfo.get("profileImage");
+
+        try {
+            // 카카오 로그인 정보를 사용하여 사용자 저장 또는 업데이트
+            userService.saveOrUpdateKakaoUser(kakaoId, nickname, profileImage);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "redirect:/error"; // 에러 처리 페이지
+        }
+
+        return "redirect:/"; // 로그인 성공 후 리다이렉트할 페이지
+    }
 }
