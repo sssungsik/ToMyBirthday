@@ -22,6 +22,8 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests((authorizeHttpRequests) -> authorizeHttpRequests
                         .requestMatchers(new AntPathRequestMatcher("/h2-console/**")).permitAll()
+                        .requestMatchers(new AntPathRequestMatcher("/hc")).permitAll()
+                        .requestMatchers(new AntPathRequestMatcher("/env")).permitAll()
                         .requestMatchers(new AntPathRequestMatcher("/message/new")).permitAll() // 메시지 작성 페이지는 로그인 없이 접근 가능
                         .requestMatchers(new AntPathRequestMatcher("/message")).permitAll()
                         .requestMatchers(new AntPathRequestMatcher("/message/{id}")).permitAll()
