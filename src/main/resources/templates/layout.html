@@ -9,12 +9,25 @@
     <!-- Google Fonts -->
     <link th:href="@{/assets/vendor/bootstrap-icons/bootstrap-icons.css}" rel="stylesheet"/>
     <title>Title</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+    <title>메인</title>
+    <meta content="" name="description" />
+    <meta content="" name="keywords" />
+
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i" rel="stylesheet"/>
+
+
 </head>
 <body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <!--<nav th:replace="~{navbar :: navbarFragment}"></nav>-->
     <th:block layout:fragment="content"></th:block>
 
-<script th:src="@{/assets/vendor/bootstrap/js/bootstrap.min.js}"></script>
+
 <!-- Vendor JS Files -->
 <script th:src="@{/assets/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
 <script th:src="@{/assets/vendor/php-email-form/validate.js}"></script>
@@ -23,6 +36,7 @@
 <script th:src="@{/assets/js/main.js}"></script>
 <!-- 자바스크립트 Start -->
 <th:block layout:fragment="script"></th:block>
+
 <!-- 자바스크립트 End -->
 </body>
 </html>
