@@ -191,7 +191,7 @@ h6,
 }
 .btnList {
   display: flex;
-  max-width: 23.4375rem;
+  width: 100%;
   margin: auto;
 }
 .shareBtn{
